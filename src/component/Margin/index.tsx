@@ -5,10 +5,10 @@ export default function Margin({
     bottom = 0,
     children,
   }: {
-    left?: Number;
-    top?: Number;
-    right?: Number;
-    bottom?: Number;
+    left?: number;
+    top?: number;
+    right?: number;
+    bottom?: number;
     children: JSX.Element;
   }) {
     return (
