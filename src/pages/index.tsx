@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Center from "../component/Center";
-import CheckBox from "../component/CheckBox";
 import Kaikaikiki from "../component/Kaikaikiki";
 import Margin from "../component/Margin";
 import TextButton from "../component/TextButton";
+import CheckBoxWrapper from "../component/CheckBoxWrapper";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
             <Kaikaikiki />
           </Margin>
           <Margin bottom={1}>
-            <CheckBox label="leaves" />
+            <CheckBoxWrapper />
           </Margin>
           <Margin bottom={1}>
             <TextButton label="Generate" onClick={() => {}} />
