@@ -4,6 +4,7 @@ import Kaikaikiki from "../component/Kaikaikiki";
 import Margin from "../component/Margin";
 import TextButton from "../component/TextButton";
 import CheckBoxWrapper from "../component/CheckBoxWrapper";
+import GenerateButton from "../component/GenerateButton";
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
             <CheckBoxWrapper />
           </Margin>
           <Margin bottom={1}>
-            <TextButton label="Generate" onClick={() => {}} />
+            <GenerateButton />
           </Margin>
           <TextButton label="Export" onClick={() => {}} />
         </div>
