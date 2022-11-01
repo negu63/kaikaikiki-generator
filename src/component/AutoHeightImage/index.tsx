@@ -1,14 +1,16 @@
-import Image from "next/image";
+import Image, { ImageLoader } from "next/image";
 
 export default function AutoHeightImage({
+  loader,
   width = 30,
   maxWidth = 400,
   alt = "",
   priority = true,
   src,
 }: {
-  width?: Number;
-  maxWidth?: Number;
+  loader?: ImageLoader;
+  width?: number;
+  maxWidth?: number;
   alt?: string;
   priority?: boolean;
   src: string;
@@ -17,6 +19,7 @@ export default function AutoHeightImage({
     <>
       <div style={{ maxWidth: `${maxWidth}px`, width: `${width}vw` }}>
         <Image
+          loader={loader}
           src={src}
           alt={alt}
           width="0"
