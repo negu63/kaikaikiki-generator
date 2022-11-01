@@ -1,4 +1,4 @@
-export default function Center({ children }: { children: JSX.Element }) {
+export default function Center({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div
