@@ -1,4 +1,5 @@
 export interface Palette {
+  [key: string]: string;
   outline: string;
   face: string;
   mouthOutline: string;
