@@ -20,8 +20,6 @@ export default function UndoButton() {
 
   return (
     <>
-      <div>{paletteIndex}</div>
-      <div>{paletteHistory.length}</div>
       <IconButton
         alt="undo button"
         iconSrc="/undo.svg"
