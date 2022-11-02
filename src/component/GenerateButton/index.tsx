@@ -10,6 +10,10 @@ import {
 } from "../../recoil/atoms/checkAtom";
 import { Palette } from "../../types/palette";
 import getRandomHex from "../../utils/getRandomHex";
+import {
+  $paletteHistory,
+  $paletteIndex,
+} from "../../recoil/atoms/paletteHistoryAtom";
 
 export default function GenerateButton() {
   const outlineState = useRecoilValue($checkOutline);
@@ -19,6 +23,8 @@ export default function GenerateButton() {
   const leavesState = useRecoilValue($checkLeaves);
 
   const [palette, setPalette] = useRecoilState($palette);
+  const [paletteHistory, setPaletteHistory] = useRecoilState($paletteHistory);
+  const [paletteIndex, setPaletteIndex] = useRecoilState($paletteIndex);
 
   function generateColor() {
     const tmpPalette: Palette = JSON.parse(JSON.stringify(palette));
@@ -51,7 +57,14 @@ export default function GenerateButton() {
           if (key.includes("leaf")) tmpPalette[key] = getRandomHex();
         });
 
+    const newPaletteHistory = [
+      ...paletteHistory.slice(0, paletteIndex + 1),
+      tmpPalette,
+    ].slice(-10);
+
     setPalette(tmpPalette);
+    setPaletteHistory(newPaletteHistory);
+    setPaletteIndex(newPaletteHistory.length - 1);
   }
 
   return (
