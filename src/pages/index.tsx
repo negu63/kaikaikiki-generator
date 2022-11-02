@@ -5,6 +5,8 @@ import Margin from "../component/Margin";
 import CheckBoxWrapper from "../component/CheckBoxWrapper";
 import GenerateButton from "../component/GenerateButton";
 import ExportButton from "../component/ExportButton";
+import UndoButton from "../component/UndoButton";
+import RedoButton from "../component/RedoButton";
 
 export default function Home() {
   return (
@@ -17,8 +19,20 @@ export default function Home() {
 
       <Center>
         <div>
-          <Margin bottom={4}>
-            <Kaikaikiki />
+          <Margin bottom={1}>
+            <Center>
+              <Kaikaikiki />
+            </Center>
+          </Margin>
+          <Margin bottom={3}>
+            <Center>
+              <Margin right={0.5}>
+                <UndoButton />
+              </Margin>
+              <Margin left={0.5}>
+                <RedoButton />
+              </Margin>
+            </Center>
           </Margin>
           <Margin bottom={1}>
             <CheckBoxWrapper />
