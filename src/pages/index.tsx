@@ -2,9 +2,9 @@ import Head from "next/head";
 import Center from "../component/Center";
 import Kaikaikiki from "../component/Kaikaikiki";
 import Margin from "../component/Margin";
-import TextButton from "../component/TextButton";
 import CheckBoxWrapper from "../component/CheckBoxWrapper";
 import GenerateButton from "../component/GenerateButton";
+import ExportButton from "../component/ExportButton";
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
           <Margin bottom={1}>
             <GenerateButton />
           </Margin>
-          <TextButton label="Export" onClick={() => {}} />
+          <ExportButton />
         </div>
       </Center>
     </>
