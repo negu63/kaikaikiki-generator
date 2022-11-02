@@ -6,39 +6,54 @@ export const config = {
   runtime: "experimental-edge",
 };
 
-export default async function handler(
-  req: NextApiRequest,
-) {
+export default async function handler(req: NextApiRequest) {
   const { searchParams } = new URL(req.url!);
-  const outlineColor = "#" + getSearchParam(searchParams, "outline", "241f20");
-  const faceColor = "#" + getSearchParam(searchParams, "face", "f4ef15");
-  const mouthOutlineColor =
-    "#" + getSearchParam(searchParams, "mouthOutline", "251f20");
-  const mouthColor = "#" + getSearchParam(searchParams, "mouth", "ec1d24");
-  const scleraLeftColor =
-    "#" + getSearchParam(searchParams, "scleraLeft", "242020");
-  const scleraRightColor =
-    "#" + getSearchParam(searchParams, "scleraRight", "242020");
-  const pupilLeftTopColor =
-    "#" + getSearchParam(searchParams, "pupilLeftTop", "fcfcfc");
-  const pupilRightTopColor =
-    "#" + getSearchParam(searchParams, "pupilRightTop", "fbfbfb");
-  const pupilLeftBottomColor =
-    "#" + getSearchParam(searchParams, "pupilLeftBottom", "faf9fa");
-  const pupilRightBottomColor =
-    "#" + getSearchParam(searchParams, "RightlLeftBottom", "f8f8f8");
-  const leaf1Color = "#" + getSearchParam(searchParams, "leaf1", "ef4039");
-  const leaf2Color = "#" + getSearchParam(searchParams, "leaf2", "f47d30");
-  const leaf3Color = "#" + getSearchParam(searchParams, "leaf3", "f9b734");
-  const leaf4Color = "#" + getSearchParam(searchParams, "leaf4", "f5f137");
-  const leaf5Color = "#" + getSearchParam(searchParams, "leaf5", "97d44a");
-  const leaf6Color = "#" + getSearchParam(searchParams, "leaf6", "37b460");
-  const leaf7Color = "#" + getSearchParam(searchParams, "leaf7", "40baa9");
-  const leaf8Color = "#" + getSearchParam(searchParams, "leaf8", "56baeb");
-  const leaf9Color = "#" + getSearchParam(searchParams, "leaf9", "3e83cb");
-  const leaf10Color = "#" + getSearchParam(searchParams, "leaf10", "4c44a3");
-  const leaf11Color = "#" + getSearchParam(searchParams, "leaf11", "9e3da3");
-  const leaf12Color = "#" + getSearchParam(searchParams, "leaf12", "ed31a1");
+  const outlineColor = getSearchParam(searchParams, "outline", "#241f20");
+  const faceColor = getSearchParam(searchParams, "face", "#f4ef15");
+  const mouthOutlineColor = getSearchParam(
+    searchParams,
+    "mouthOutline",
+    "#251f20"
+  );
+  const mouthColor = getSearchParam(searchParams, "mouth", "#ec1d24");
+  const scleraLeftColor = getSearchParam(searchParams, "scleraLeft", "#242020");
+  const scleraRightColor = getSearchParam(
+    searchParams,
+    "scleraRight",
+    "#242020"
+  );
+  const pupilLeftTopColor = getSearchParam(
+    searchParams,
+    "pupilLeftTop",
+    "#fcfcfc"
+  );
+  const pupilRightTopColor = getSearchParam(
+    searchParams,
+    "pupilRightTop",
+    "#fbfbfb"
+  );
+  const pupilLeftBottomColor = getSearchParam(
+    searchParams,
+    "pupilLeftBottom",
+    "#faf9fa"
+  );
+  const pupilRightBottomColor = getSearchParam(
+    searchParams,
+    "RightlLeftBottom",
+    "#f8f8f8"
+  );
+  const leaf1Color = getSearchParam(searchParams, "leaf1", "#ef4039");
+  const leaf2Color = getSearchParam(searchParams, "leaf2", "#f47d30");
+  const leaf3Color = getSearchParam(searchParams, "leaf3", "#f9b734");
+  const leaf4Color = getSearchParam(searchParams, "leaf4", "#f5f137");
+  const leaf5Color = getSearchParam(searchParams, "leaf5", "#97d44a");
+  const leaf6Color = getSearchParam(searchParams, "leaf6", "#37b460");
+  const leaf7Color = getSearchParam(searchParams, "leaf7", "#40baa9");
+  const leaf8Color = getSearchParam(searchParams, "leaf8", "#56baeb");
+  const leaf9Color = getSearchParam(searchParams, "leaf9", "#3e83cb");
+  const leaf10Color = getSearchParam(searchParams, "leaf10", "#4c44a3");
+  const leaf11Color = getSearchParam(searchParams, "leaf11", "#9e3da3");
+  const leaf12Color = getSearchParam(searchParams, "leaf12", "#ed31a1");
 
   return new ImageResponse(
     (

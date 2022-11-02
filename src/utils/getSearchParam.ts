@@ -3,5 +3,5 @@ export default function getSearchParam(
   key: string,
   defaultValue: string
 ) {
-  return params.has(key) ? params.get(key) : defaultValue;
+  return params.has(key) ? params.get(key)! : defaultValue;
 }
