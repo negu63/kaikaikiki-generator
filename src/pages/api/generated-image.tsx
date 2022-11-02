@@ -1,5 +1,6 @@
 import { ImageResponse } from "@vercel/og";
 import { NextApiRequest } from "next";
+import { defaultColor } from "../../constants/defaultColor";
 import getSearchParam from "../../utils/getSearchParam";
 
 export const config = {
@@ -8,52 +9,72 @@ export const config = {
 
 export default async function handler(req: NextApiRequest) {
   const { searchParams } = new URL(req.url!);
-  const outlineColor = getSearchParam(searchParams, "outline", "#241f20");
-  const faceColor = getSearchParam(searchParams, "face", "#f4ef15");
+  const outlineColor = getSearchParam(
+    searchParams,
+    "outline",
+    defaultColor.outline
+  );
+  const faceColor = getSearchParam(searchParams, "face", defaultColor.face);
   const mouthOutlineColor = getSearchParam(
     searchParams,
     "mouthOutline",
-    "#251f20"
+    defaultColor.mouthOutline
   );
-  const mouthColor = getSearchParam(searchParams, "mouth", "#ec1d24");
-  const scleraLeftColor = getSearchParam(searchParams, "scleraLeft", "#242020");
+  const mouthColor = getSearchParam(searchParams, "mouth", defaultColor.mouth);
+  const scleraLeftColor = getSearchParam(
+    searchParams,
+    "scleraLeft",
+    defaultColor.scleraLeft
+  );
   const scleraRightColor = getSearchParam(
     searchParams,
     "scleraRight",
-    "#242020"
+    defaultColor.scleraRight
   );
   const pupilLeftTopColor = getSearchParam(
     searchParams,
     "pupilLeftTop",
-    "#fcfcfc"
+    defaultColor.pupilLeftTop
   );
   const pupilRightTopColor = getSearchParam(
     searchParams,
     "pupilRightTop",
-    "#fbfbfb"
+    defaultColor.pupilRightTop
   );
   const pupilLeftBottomColor = getSearchParam(
     searchParams,
     "pupilLeftBottom",
-    "#faf9fa"
+    defaultColor.pupilLeftBottom
   );
   const pupilRightBottomColor = getSearchParam(
     searchParams,
     "RightlLeftBottom",
-    "#f8f8f8"
+    defaultColor.pupilRightBottom
   );
-  const leaf1Color = getSearchParam(searchParams, "leaf1", "#ef4039");
-  const leaf2Color = getSearchParam(searchParams, "leaf2", "#f47d30");
-  const leaf3Color = getSearchParam(searchParams, "leaf3", "#f9b734");
-  const leaf4Color = getSearchParam(searchParams, "leaf4", "#f5f137");
-  const leaf5Color = getSearchParam(searchParams, "leaf5", "#97d44a");
-  const leaf6Color = getSearchParam(searchParams, "leaf6", "#37b460");
-  const leaf7Color = getSearchParam(searchParams, "leaf7", "#40baa9");
-  const leaf8Color = getSearchParam(searchParams, "leaf8", "#56baeb");
-  const leaf9Color = getSearchParam(searchParams, "leaf9", "#3e83cb");
-  const leaf10Color = getSearchParam(searchParams, "leaf10", "#4c44a3");
-  const leaf11Color = getSearchParam(searchParams, "leaf11", "#9e3da3");
-  const leaf12Color = getSearchParam(searchParams, "leaf12", "#ed31a1");
+  const leaf1Color = getSearchParam(searchParams, "leaf1", defaultColor.leaf1);
+  const leaf2Color = getSearchParam(searchParams, "leaf2", defaultColor.leaf2);
+  const leaf3Color = getSearchParam(searchParams, "leaf3", defaultColor.leaf3);
+  const leaf4Color = getSearchParam(searchParams, "leaf4", defaultColor.leaf4);
+  const leaf5Color = getSearchParam(searchParams, "leaf5", defaultColor.leaf5);
+  const leaf6Color = getSearchParam(searchParams, "leaf6", defaultColor.leaf6);
+  const leaf7Color = getSearchParam(searchParams, "leaf7", defaultColor.leaf7);
+  const leaf8Color = getSearchParam(searchParams, "leaf8", defaultColor.leaf8);
+  const leaf9Color = getSearchParam(searchParams, "leaf9", defaultColor.leaf9);
+  const leaf10Color = getSearchParam(
+    searchParams,
+    "leaf10",
+    defaultColor.leaf10
+  );
+  const leaf11Color = getSearchParam(
+    searchParams,
+    "leaf11",
+    defaultColor.leaf11
+  );
+  const leaf12Color = getSearchParam(
+    searchParams,
+    "leaf12",
+    defaultColor.leaf12
+  );
 
   return new ImageResponse(
     (
