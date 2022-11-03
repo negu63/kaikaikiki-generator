@@ -18,17 +18,19 @@ export default function CheckBox({
 
   return (
     <>
-      <div>
+      <div style={{ cursor: "pointer" }}>
         <input
           type="checkbox"
           id={label}
-          style={style}
+          style={{ ...style, cursor: "pointer" }}
           onChange={(e) => {
             setState(e.target.checked);
           }}
           checked={state}
         />
-        <label htmlFor={label}>{label}</label>
+        <label style={{ cursor: "pointer" }} htmlFor={label}>
+          {label}
+        </label>
       </div>
     </>
   );

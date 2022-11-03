@@ -12,6 +12,7 @@ export default function IconButton({
   return (
     <>
       <div
+        style={{ cursor: "pointer" }}
         onClick={() => {
           onClick();
         }}

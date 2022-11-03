@@ -36,6 +36,7 @@ export default function TextButton({
           height: "8vw",
           overflow: "clip",
           borderRadius: "10px",
+          cursor: "pointer"
         }}
       >
         {label}
