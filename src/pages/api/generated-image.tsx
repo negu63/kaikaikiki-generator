@@ -48,7 +48,7 @@ export default async function handler(req: NextApiRequest) {
   );
   const pupilRightBottomColor = getSearchParam(
     searchParams,
-    "RightlLeftBottom",
+    "pupilRightBottom",
     defaultColor.pupilRightBottom
   );
   const leaf1Color = getSearchParam(searchParams, "leaf1", defaultColor.leaf1);
