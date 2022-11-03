@@ -1,4 +1,5 @@
 import { SetterOrUpdater } from "recoil";
+import useThemeDetector from "../../hooks/useThemeDetector";
 
 export default function CheckBox({
   label,
@@ -9,13 +10,19 @@ export default function CheckBox({
   state: boolean;
   setState: SetterOrUpdater<boolean>;
 }) {
+  const isDarkTheme = useThemeDetector();
+
+  const style = isDarkTheme
+    ? { accentColor: "white" }
+    : { accentColor: "black" };
+
   return (
     <>
       <div>
         <input
           type="checkbox"
           id={label}
-          style={{ accentColor: "black" }}
+          style={style}
           onChange={(e) => {
             setState(e.target.checked);
           }}

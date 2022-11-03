@@ -1,3 +1,5 @@
+import useThemeDetector from "../../hooks/useThemeDetector";
+
 export default function TextButton({
   label,
   onClick,
@@ -5,6 +7,20 @@ export default function TextButton({
   label: string;
   onClick: Function;
 }) {
+  const isDarkTheme = useThemeDetector();
+
+  const style = isDarkTheme
+    ? {
+        backgroundColor: "white",
+        border: "1px solid white",
+        color: "black",
+      }
+    : {
+        backgroundColor: "black",
+        border: "1px solid black",
+        color: "white",
+      };
+
   return (
     <>
       <button
@@ -13,13 +29,12 @@ export default function TextButton({
           onClick();
         }}
         style={{
-          maxWidth: '150px',
-          maxHeight:'52px',
+          ...style,
+          maxWidth: "150px",
+          maxHeight: "52px",
           width: "20vw",
           height: "8vw",
           overflow: "clip",
-          backgroundColor: "white",
-          border: "1px solid",
           borderRadius: "10px",
         }}
       >

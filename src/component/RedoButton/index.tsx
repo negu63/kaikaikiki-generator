@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import useThemeDetector from "../../hooks/useThemeDetector";
 import { $palette } from "../../recoil/atoms/paletteAtom";
 import {
   $paletteHistory,
@@ -10,6 +12,9 @@ export default function RedoButton() {
   const setPalette = useSetRecoilState($palette);
   const paletteHistry = useRecoilValue($paletteHistory);
   const [paletteIndex, setPaletteIndex] = useRecoilState($paletteIndex);
+  const isDarkTheme = useThemeDetector();
+
+  const src = isDarkTheme ? "/redo_white.svg" : "/redo.svg";
 
   function redo() {
     if (paletteIndex + 1 < paletteHistry.length) {
@@ -22,7 +27,7 @@ export default function RedoButton() {
     <>
       <IconButton
         alt="redo button"
-        iconSrc="/redo.svg"
+        iconSrc={src}
         onClick={() => {
           redo();
         }}
