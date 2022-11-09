@@ -1,4 +1,6 @@
-export const defaultColor = {
+import { Palette } from './../types/palette';
+
+export const defaultColor: Palette = {
   outline: "241f20",
   face: "f4ef15",
   mouthOutline: "251f20",
