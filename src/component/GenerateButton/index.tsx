@@ -26,53 +26,103 @@ export default function GenerateButton() {
   const [paletteHistory, setPaletteHistory] = useRecoilState($paletteHistory);
   const [paletteIndex, setPaletteIndex] = useRecoilState($paletteIndex);
 
-  function generateColor() {
-    const tmpPalette: Palette = JSON.parse(JSON.stringify(palette));
+  const generatePalette = (palette: Palette) => {
+    return {
+      ...palette,
+      ...generateOutlineColor(outlineState),
+      ...generateFaceColor(faceState),
+      ...generateMouthColor(mouthState),
+      ...generateEyesColor(eyesState),
+      ...generateLeavesColor(leavesState),
+    };
+  };
+
+  const enqueueNewHistory = (newPalette: Palette) => {
+    return [...paletteHistory.slice(0, paletteIndex + 1), newPalette].slice(
+      -10
+    );
+  };
+
+  const calculatePaletteIndex = () => {
+    return Math.min(paletteHistory.length + 1, 10);
+  };
+
+  const generateOutlineColor = (state = true) => {
+    const color = getRandomHex();
+    return state
+      ? {
+          outline: color,
+          mouthOutline: color,
+        }
+      : {};
+  };
+
+  const generateFaceColor = (state = true) => {
+    return state
+      ? {
+          face: getRandomHex(),
+        }
+      : {};
+  };
+
+  const generateMouthColor = (state = true) => {
+    return state
+      ? {
+          mouth: getRandomHex(),
+        }
+      : {};
+  };
+
+  const generateEyesColor = (state = true) => {
+    return state
+      ? {
+          scleraLeft: getRandomHex(),
+          scleraRight: getRandomHex(),
+          pupilLeftTop: getRandomHex(),
+          pupilRightTop: getRandomHex(),
+          pupilLeftBottom: getRandomHex(),
+          pupilRightBottom: getRandomHex(),
+        }
+      : {};
+  };
+
+  const generateLeavesColor = (state = true) => {
     const color1 = getRandomHex();
     const color2 = getRandomHex();
+    const isHalfColor = Math.random() >= 0.5;
 
-    if (outlineState)
-      tmpPalette.outline = tmpPalette.mouthOutline = getRandomHex();
+    const colorSelector = (state = true, color: string) => {
+      return state ? color : getRandomHex();
+    };
 
-    if (faceState) tmpPalette.face = getRandomHex();
-
-    if (mouthState) tmpPalette.mouth = getRandomHex();
-
-    if (eyesState)
-      Object.keys(tmpPalette).forEach((key) => {
-        if (key.includes("sclera") || key.includes("pupil"))
-          tmpPalette[key] = getRandomHex();
-      });
-
-    if (leavesState)
-      if (Math.random() >= 0.5)
-        Object.keys(tmpPalette).forEach((key) => {
-          if (key.includes("leaf"))
-            if (Number(key.replace("leaf", "")) % 2 == 1)
-              tmpPalette[key] = color1;
-            else tmpPalette[key] = color2;
-        });
-      else
-        Object.keys(tmpPalette).forEach((key) => {
-          if (key.includes("leaf")) tmpPalette[key] = getRandomHex();
-        });
-
-    const newPaletteHistory = [
-      ...paletteHistory.slice(0, paletteIndex + 1),
-      tmpPalette,
-    ].slice(-10);
-
-    setPalette(tmpPalette);
-    setPaletteHistory(newPaletteHistory);
-    setPaletteIndex(newPaletteHistory.length - 1);
-  }
+    return state
+      ? {
+          leaf1: colorSelector(isHalfColor, color1),
+          leaf2: colorSelector(isHalfColor, color2),
+          leaf3: colorSelector(isHalfColor, color1),
+          leaf4: colorSelector(isHalfColor, color2),
+          leaf5: colorSelector(isHalfColor, color1),
+          leaf6: colorSelector(isHalfColor, color2),
+          leaf7: colorSelector(isHalfColor, color1),
+          leaf8: colorSelector(isHalfColor, color2),
+          leaf9: colorSelector(isHalfColor, color1),
+          leaf10: colorSelector(isHalfColor, color2),
+          leaf11: colorSelector(isHalfColor, color1),
+          leaf12: colorSelector(isHalfColor, color2),
+        }
+      : {};
+  };
 
   return (
     <>
       <TextButton
         label="Generate"
         onClick={() => {
-          generateColor();
+          const newPalette = generatePalette(palette);
+
+          setPalette(newPalette);
+          setPaletteHistory(enqueueNewHistory(newPalette));
+          setPaletteIndex(calculatePaletteIndex());
         }}
       />
     </>
