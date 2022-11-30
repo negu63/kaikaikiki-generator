@@ -44,7 +44,7 @@ export default function GenerateButton() {
   };
 
   const calculatePaletteIndex = () => {
-    return Math.min(paletteHistory.length + 1, 10);
+    return Math.min(paletteIndex + 1, 10);
   };
 
   const generateOutlineColor = (state = true) => {
